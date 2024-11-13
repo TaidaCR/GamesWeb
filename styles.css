@@ -1,3 +1,4 @@
+/*GENERAL*/
 *{
     box-sizing: border-box;
     padding:0;
@@ -7,29 +8,51 @@
 
 .text-container{
     text-align: center;
+    /* background-color: rgb(158, 218, 198); */
+    width: 100vw;
 }
 
 h1{
-
     font-family: 'Monoton', sans-serif;
     text-transform: uppercase;
     font-weight: 200;
 }
 
-.main-table{
-    display:grid;
-    grid-template-columns: 2;
+.winner{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgb(158, 218, 198); */
+    width: 100vw;
 }
 
-.tab1{
+/*PIEDRA PAPEL O TIJERA*/
+#ppt{
+    background-color: rgb(160, 239, 213);
+}
+
+#ppt .main-table{
+    display:grid;
+    grid-template-columns: 2;
+    background-image: url('https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    background-size: cover;
+}
+
+#ppt .option-container{
+    width: 63px;
+    height: 63px;
+}
+
+#ppt .tab1{
     grid-column: 1/2;
 }
 
-.tab2{
+#ppt .tab2{
     grid-column: 2/3;
 }
 
-.table{
+#ppt .table{
     border: 1px solid black;
     padding: 5px;
     display: flex;
@@ -39,7 +62,7 @@ h1{
     gap: 10px;
 }
 
-.option{
+#ppt .option{
     width: 60px;
     height: 60px;
     display: flex;
@@ -47,19 +70,49 @@ h1{
     justify-content: center;
     /* border: 1px solid black; */
     border-radius: 70px;
-    background-color: rgba(208, 153, 218, 0.429);
+    background-color: rgba(208, 153, 218);
 }
 
-.winner{
+#ppt .active{
+    background-color: rgb(134, 41, 227);
+    width: 63px;
+    height: 63px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+/*TRES EN RAYA*/
+#ter{
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(196, 158, 218);
+}
+
+#ter .main-table{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,1fr);
+    border: 3px solid black;
+    gap: 3px solid;
+    width: 70vw;
+    height: 70vw;
+}
+
+#ter .player1{
+    background-color: rgb(93, 93, 183) !important;
+}
+
+#ter .cell{
+    background-color: rgb(194, 98, 98); /* Fondo de cada celda */
+    padding: 20px;
+    text-align: center;
+    border: 1px solid black;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.active{
-    background-color: rgba(114, 24, 204, 0.788);
-    width: 63px;
-    height: 63px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+#ter .player2{
+    background-color:blueviolet;
 }

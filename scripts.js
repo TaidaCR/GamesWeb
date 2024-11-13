@@ -1,16 +1,4 @@
-/*
- * Crea un programa que calcule quien gana más partidas al piedra,
- * papel, tijera, lagarto, spock.
- * - El resultado puede ser: "Player 1", "Player 2", "Tie" (empate)
- * - La función recibe un listado que contiene pares, representando cada jugada.
- * - El par puede contener combinaciones de "🗿" (piedra), "📄" (papel),
- *   "✂️" (tijera), "🦎" (lagarto) o "🖖" (spock).
- * - Ejemplo. Entrada: [("🗿","✂️"), ("✂️","🗿"), ("📄","✂️")]. Resultado: "Player 2".
- * - Debes buscar información sobre cómo se juega con estas 5 posibilidades.
- */
-
-
-//QUIEN GANA
+//PPT - QUIEN GANA 3
 document.addEventListener("DOMContentLoaded",  () => {
     
     let score = document.querySelector(".score");
@@ -34,20 +22,26 @@ document.addEventListener("DOMContentLoaded",  () => {
             }
             score.style.display="block"
         }
-    }
-    
 
+        setTimeout(() => {
+            score.style.display = "none";
+            let activeArray=document.querySelectorAll(".active");
+
+            activeArray.forEach(active => {
+                active.classList.toggle("active");
+            
+            });
+                }, 4000);
+            }
+    
     let tab1 = document.querySelector(".tab1");
     let tab2 = document.querySelector(".tab2");
 
     tab1.addEventListener("click", checkResult);
     tab2.addEventListener("click", checkResult);
-
-    score.style.display="none"
-
 });
 
-//ELECCION ACTIVE
+//PPT - ELECCION ACTIVE
 document.addEventListener("DOMContentLoaded", () => {
 
     let optionArray=document.querySelectorAll(".option");
@@ -57,6 +51,63 @@ document.addEventListener("DOMContentLoaded", () => {
             option.classList.toggle("active");
         });
     });
-
 })
+
+//TER - SELECCION CELDA --> PLAYER
+document.addEventListener("DOMContentLoaded", () => {
+    let playerArray = document.querySelectorAll(".cell");
+    let clickCount = 0;
+
+    playerArray.forEach(cell => {
+        cell.addEventListener("click", () => {
+            if (!cell.classList.contains("player1") && !cell.classList.contains("player2")) {
+                if (clickCount % 2 === 0) {
+                    cell.classList.add("player1");
+                } else {
+                    cell.classList.add("player2");
+                }
+                clickCount++;
+            }
+        });
+    });
+
+    /*LÓGICA DE GANADOR*/
+
+
+
+    const cells = document.querySelectorAll('.cell');
+    const rows = [];
+    const columns = [];
+
+    let score = document.querySelector(".score");
+
+    for(let i=0; i<cells.length; i+=3){
+        rows.push([cells[i], cells[i+1], cells [i+2]]);
+        columns.push([cells[i], cells[i+3], cells [i+6]]);
+    }
+
+    const rowContainClass = rows.some(row => row.every(cell => cell.classList.contains("player1")));
+    const columnContainClass = columns.some(column => column.every(cell => cell.classList.contains("player1")));
+    const rowContainClass2 = rows.some(row => row.every(cell => cell.classList.contains("player2")));
+    const columnContainClass2 = columns.some(column => column.every(cell => cell.classList.contains("player2")));
+
+    if (rowContainClass || columnContainClass){
+        score.textContent= "Gana el jugador 1"
+        score.style.display = "block";
+    }else if (rowContainClass2 || columnContainClass2){
+        score.textContent= "Gana el jugador 2"
+        score.style.display = "block";
+    }
+    
+
+
+    // setTimeout(() => {
+    //     let activeArray=document.querySelectorAll(".active");
+
+    //     activeArray.forEach(active => {
+    //         active.classList.toggle("active");
+        
+    //     });
+    //         }, 4000);
+});
 
