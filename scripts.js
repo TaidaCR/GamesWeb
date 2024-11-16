@@ -72,42 +72,54 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /*LÓGICA DE GANADOR*/
+    function checkWinner () {
+        const cells = document.querySelectorAll('.cell');
+        const rows = [];
+        const columns = [];
+
+        let score = document.querySelector(".score");
+
+        /*ROWS*/
+        for(let i=0; i<cells.length; i+=3){
+            rows.push([cells[i], cells[i+1], cells [i+2]]);
+        }
+
+        /*COLUMNS*/
+        for(let i=0; i<3; i++){
+            columns.push([cells[i], cells[i+3], cells [i+6]]);
+        }
+
+        /*DIAGONAL */
+        const diags = [[cells[0], cells[4], cells [8]],[cells[2], cells[4], cells [6]]];
+
+        const rowContainClass = rows.some(row => row.every(cell => cell.classList.contains("player1")));
+        const columnContainClass = columns.some(column => column.every(cell => cell.classList.contains("player1")));
+        const rowContainClass2 = rows.some(row => row.every(cell => cell.classList.contains("player2")));
+        const columnContainClass2 = columns.some(column => column.every(cell => cell.classList.contains("player2")));
+        const diagContainClass = diags.some(diag => diag.every(cell => cell.classList.contains("player1")));
+        const diagContainClass2 = diags.some(diag => diag.every(cell => cell.classList.contains("player2")));
 
 
-
-    const cells = document.querySelectorAll('.cell');
-    const rows = [];
-    const columns = [];
-
-    let score = document.querySelector(".score");
-
-    for(let i=0; i<cells.length; i+=3){
-        rows.push([cells[i], cells[i+1], cells [i+2]]);
-        columns.push([cells[i], cells[i+3], cells [i+6]]);
+        if (rowContainClass || columnContainClass || diagContainClass){
+            score.textContent= "Gana el jugador 1"
+            score.style.display = "block";
+        }else if (rowContainClass2 || columnContainClass2 || diagContainClass2){
+            score.textContent= "Gana el jugador 2"
+            score.style.display = "block";
+        }
     }
 
-    const rowContainClass = rows.some(row => row.every(cell => cell.classList.contains("player1")));
-    const columnContainClass = columns.some(column => column.every(cell => cell.classList.contains("player1")));
-    const rowContainClass2 = rows.some(row => row.every(cell => cell.classList.contains("player2")));
-    const columnContainClass2 = columns.some(column => column.every(cell => cell.classList.contains("player2")));
+    let table = document.querySelector(".main-table");
 
-    if (rowContainClass || columnContainClass){
-        score.textContent= "Gana el jugador 1"
-        score.style.display = "block";
-    }else if (rowContainClass2 || columnContainClass2){
-        score.textContent= "Gana el jugador 2"
-        score.style.display = "block";
-    }
-    
+    table.addEventListener("click", checkWinner);
 
+    setTimeout(() => {
+        let playerArray=document.querySelectorAll(".cell");
 
-    // setTimeout(() => {
-    //     let activeArray=document.querySelectorAll(".active");
-
-    //     activeArray.forEach(active => {
-    //         active.classList.toggle("active");
+        playerArray.forEach(player => {
+            player.className("cell")
         
-    //     });
-    //         }, 4000);
+        });
+            }, 4000);
 });
 
