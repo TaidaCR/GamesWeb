@@ -4,6 +4,12 @@
     padding:0;
     margin:0;
     font-family: 'Unica One', sans-serif;
+    list-style: none;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
 }
 
 .text-container{
@@ -25,6 +31,81 @@ h1{
     align-items: center;
     /* background-color: rgb(158, 218, 198); */
     width: 100vw;
+}
+
+.btn-return{
+    position: absolute;
+    text-decoration: none;
+    align-self: flex-start;
+    padding: 18px;
+    bottom: 50px;
+    border-radius: 100px;
+    background-color:rgba(0, 0, 0, 0.5);
+    color: black;
+    margin: 30px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2), -3px -3px 6px rgba(0, 0, 0, 0.5);
+}
+
+.btn-return:hover{
+    transform: translateY(-2px);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3), -5px -5px 10px rgba(0, 0, 0, 0.5);
+}
+
+/*EMPAREJADOS*/
+
+#emp .main-table{
+    width: 800px;
+    max-height: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+
+
+}
+
+#emp .cell{
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+    
+}
+
+#emp .cell img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+#emp .cell.shown img{
+    display: block;
+}
+
+/*INDEX*/
+#index{
+    background-image: url('https://images.pexels.com/photos/1146134/pexels-photo-1146134.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    color: rgb(192, 100, 34);
+    font-size: 20px;
+}
+
+#index .text-container{
+    padding: 30px 50px;
+}
+
+#index a{
+    color: white;
+}
+
+#index .games-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /*PIEDRA PAPEL O TIJERA*/
@@ -81,7 +162,7 @@ h1{
 }
 
 /*TRES EN RAYA*/
-#ter{
+#ter, #emp{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -91,12 +172,12 @@ h1{
 
 #ter .main-table{
     display: grid;
-    grid-template-columns: repeat(3,1fr);
-    grid-template-rows: repeat(3,1fr);
+    grid-template-columns: repeat(3,170.5px);
+    grid-template-rows: repeat(3,170.5px);
     border: 3px solid black;
     gap: 3px solid;
-    width: 70vw;
-    height: 70vw;
+    /* width: 70vw;
+    height: 70vw; */
 }
 
 #ter .player1{
