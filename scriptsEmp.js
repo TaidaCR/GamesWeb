@@ -2,9 +2,16 @@
 document.addEventListener('DOMContentLoaded', () => {
     const cards = document.querySelectorAll('.cell');
     let activeCards = []; // Para rastrear las cartas mostradas
-    let p1=document.querySelector('.p1').textContent;
+
+    let p1=document.querySelector('.p1');
     let p2=document.querySelector('.p2');
+
+    let player1=document.querySelector('.counter1');
+    let player2=document.querySelector('.counter2');
+
     let counter=0;
+    let counter1=0;
+    let counter2=0;
 
     cards.forEach(card => {
         card.addEventListener('click', () => {
@@ -26,11 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         activeCards[0].classList.add('guessed');
                         activeCards[1].classList.add('guessed');
                         if (counter%2===0){
-                            p2=p2+1;
-                            p2.textContent=p2;
+                            counter2+=1;
+                            p2.textContent=counter2;
+
                         }else if (counter%2!==0){
-                            p1=p1+1;
-                            p1.textContent=p1;
+                            counter1+=1;
+                            p1.textContent=counter1;
                         }
                     }
                     setTimeout(() => {
@@ -38,6 +46,21 @@ document.addEventListener('DOMContentLoaded', () => {
                         activeCards = []; // Reiniciar las cartas activas
                     }, 900);
                 }
+
+                if (Array.from(cards).every(card => card.classList.contains('guessed'))) {
+                    let ganador = document.querySelector('.ganador');
+                
+                    if (counter1 > counter2) {
+                        ganador.textContent = 'GANA JUGADOR 1';
+                    } else if (counter2 > counter1) {
+                        ganador.textContent = 'GANA JUGADOR 2';
+                    } else {
+                        ganador.textContent = 'EMPATE';
+                    }
+                }
+
+                player1.classList.toggle('active');
+                player2.classList.toggle('active');
             }
         });
     });

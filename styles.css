@@ -72,7 +72,6 @@ h1{
     width: 150px;
     height: 150px;
     border: 1px solid black;
-    
 }
 
 #emp .cell img{
@@ -108,6 +107,12 @@ h1{
     align-items: center;
     justify-content: center;
     font-size: 2rem;
+}
+
+#emp .active{
+    background-color:rgb(174, 249, 108);
+    padding: 5px;
+    transform: scale(1.3);
 }
 
 /*INDEX*/
@@ -204,12 +209,8 @@ h1{
     height: 70vw; */
 }
 
-#ter .player1{
-    background-color: rgb(93, 93, 183) !important;
-}
-
 #ter .cell{
-    background-color: rgb(194, 98, 98); /* Fondo de cada celda */
+    background-color: rgb(98 103 194); /* Fondo de cada celda */
     padding: 20px;
     text-align: center;
     border: 1px solid black;
@@ -219,5 +220,16 @@ h1{
 }
 
 #ter .player2{
-    background-color:blueviolet;
+    background-image: url('./assets/img/MVS.png');
+    background-size:7rem;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#ter .player1{
+    background-image: url('./assets/img/VSC.png');
+    background-size:7rem;
+    background-repeat: no-repeat;
+    background-position: center;
+
 }
